@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pareto Analysis Matrix</title>
+    <style>
+        body {
+            font-family: "Arial", sans-serif;
+            background-color: #e0f7fa;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            text-align: center;
+            color: #00796b;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #0097a7;
+        }
+        th {
+            background-color: #80deea;
+        }
+        td {
+            background-color: #e0f7fa;
+        }
+        .highlight {
+            background-color: yellow;
+            font-weight: bold;
+        }
+        .sum-cell {
+            background-color: #80deea;
+            font-weight: bold;
+        }
+        .navigation {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .navigation button {
+            background-color: #00796b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .navigation button:hover {
+            background-color: #004d40;
+        }
+        .chart-container {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Pareto Analysis Matrix</h1>
+
+        <!-- Paired Ranking Table -->
+        <div class="chart-container" id="chart1">
+            <h2>Paired Ranking Table</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Problems</th>
+                        <th>Lack of Participation</th>
+                        <th>Playing Mobile</th>
+                        <th>Being Angry</th>
+                        <th>Family Problems</th>
+                        <th>Insufficient Sleep</th>
+                        <th>Wasting Money</th>
+                        <th>Being Bullied</th>
+                        <th>Losing Concentration</th>
+                        <th>Scared of Results</th>
+                        <th>Sum</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Lack of Participation</td>
+                        <td>-</td>
+                        <td class="highlight">1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td class="sum-cell">8</td>
+                    </tr>
+                    <tr>
+                        <td>Playing Mobile All the Time</td>
+                        <td>0</td>
+                        <td>-</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td class="highlight">1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td class="sum-cell">7</td>
+                    </tr>
+                    <tr>
+                        <td>Being Angry with Teacher</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>-</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td class="highlight">1</td>
+                        <td>1</td>
+                        <td class="sum-cell">6</td>
+                    </tr>
+                    <tr>
+                        <td>Touched Due to Family Problems</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>-</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td class="sum-cell">5</td>
+                    </tr>
+                    <tr>
+                        <td>Insufficient Sleep</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>-</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td class="highlight">1</td>
+                        <td class="sum-cell">4</td>
+                    </tr>
+                    <tr>
+                        <td>Wasting Unwanted Money</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>-</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td class="sum-cell">3</td>
+                    </tr>
+                    <tr>
+                        <td>Being Bullied</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>-</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td class="sum-cell">2</td>
+                    </tr>
+                    <tr>
+                        <td>Losing Concentration with Study</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>-</td>
+                        <td>1</td>
+                        <td class="sum-cell">1</td>
+                    </tr>
+                    <tr>
+                        <td>Scared of Examination Results</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>-</td>
+                        <td class="sum-cell">0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Composite Table -->
+        <div class="chart-container" id="chart2">
+            <h2>Composite Table</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>S.N</th>
+                        <th>Problems</th>
+                        <th>Aditya</th>
+                        <th>Darshan</th>
+                        <th>Sudeep</th>
+                        <th>ujjwal</th>
+                        <th>prabhu</th>
+                        <th>roshni</th>
+                        <th>palpasa</th>
+                        <th>rajip</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Lack of Participation</td>
+                        <td>9</td>
+                        <td>8</td>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>9</td>
+                        <td>9</td>
+                        <td>9</td>
+                        <td>9</td>
+                        <td>65</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Playing Mobile All the Time</td>
+                        <td>8</td>
+                        <td>7</td>
+                        <td>7</td>
+                        <td>6</td>
+                        <td>7</td>
+                        <td>6</td>
+                        <td>6</td>
+                        <td>4</td>
+                        <td>51</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Being Angry with Teacher</td>
+                        <td>7</td>
+                        <td>7</td>
+                        <td>6</td>
+                        <td>5</td>
+                        <td>5</td>
+                        <td>5</td>
+                        <td>5</td>
+                        <td>4</td>
+                        <td>44</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Touched Due to Family Problems</td>
+                        <td>6</td>
+                        <td>6</td>
+                        <td>5</td>
+                        <td>5</td>
+                        <td>5</td>
+                        <td>5</td>
+                        <td>5</td>
+                        <td>4</td>
+                        <td>42</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Insufficient Sleep</td>
+                        <td>5</td>
+                        <td>5</td>
+                        <td>4</td>
+                        <td>4</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>4</td>
+                        <td>4</td>
+                        <td>33</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Wasting Unwanted Money</td>
+                        <td>4</td>
+                        <td>4</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>4</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>4</td>
+                        <td>34</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Being Bullied</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>4</td>
+                        <td>4</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>4</td>
+                        <td>3</td>
+                        <td>33</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>Losing Concentration with Study</td>
+                        <td>5</td>
+                        <td>5</td>
+                        <td>4</td>
+                        <td>4</td>
+                        <td>4</td>
+                        <td>4</td>
+                        <td>4</td>
+                        <td>4</td>
+                        <td>35</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>Scared of Examination Result</td>
+                        <td>4</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>4</td>
+                        <td>3</td>
+                        <td>3</td>
+                        <td>3</td>
+                        <td>3</td>
+                        <td>30</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="navigation">
+            <button onclick="showChart('chart1')">Show Paired Ranking Table</button>
+            <button onclick="showChart('chart2')">Show Composite Table</button>
+        </div>
+    </div>
+
+    <script>
+        function showChart(chartId) {
+            document.querySelectorAll('.chart-container').forEach(chart => {
+                chart.style.display = 'none';
+            });
+            document.getElementById(chartId).style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
